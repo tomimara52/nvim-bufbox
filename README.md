@@ -10,8 +10,9 @@ Then, simply add the link to this repo to your plugin manager. For example, with
 
 `Plug 'tomimara52/nvim-bufbox'`
 
+Once installed, add the following line to your nvim init file:
 
-
+`require("nvim-bufbox").setup()`
 ## Usage
 
 `:BufBoxAddBuffer` adds the current buffer to the buffer box. 
