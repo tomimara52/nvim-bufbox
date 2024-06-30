@@ -20,7 +20,15 @@ local function add_buffer_to_bufbox()
   local bufbox = vim.g.bufbox
   local buf = vim.api.nvim_get_current_buf()
   local bufname = vim.api.nvim_buf_get_name(buf)
-  bufbox["k"..buf] = bufname
+
+  local bufkey = "k"..buf
+
+  if bufbox[bufkey] == bufname then
+    print("Buffer already in bufbox")
+    return
+  end
+
+  bufbox[bufkey] = bufname
 
   vim.g.bufbox = bufbox
 end
