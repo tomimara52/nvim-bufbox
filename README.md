@@ -10,6 +10,8 @@ Then, simply add the link to this repo to your plugin manager. For example, with
 
 `Plug 'tomimara52/nvim-bufbox'`
 
+
+
 ## Usage
 
 `:BufBoxAddBuffer` adds the current buffer to the buffer box. 
@@ -18,10 +20,13 @@ Then, simply add the link to this repo to your plugin manager. For example, with
 
 `:BufBoxDisplay` opens a floating window where you can the buffer box.
 
+
 When in the buffer box window, you can fuzzy search buffers and press enter to open the selected one.
 
 You can also use the following keybindings:
 
 `ctrl-t`    opens the buffer in a new tab.
+
 `ctrl-x`    opens the buffer in a horizontal split.
+
 `ctrl-v`    opens the buffer in a vertical split.
