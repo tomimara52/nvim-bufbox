@@ -25,6 +25,15 @@ local function add_buffer_to_bufbox()
   vim.g.bufbox = bufbox
 end
 
+local function remove_buffer_from_bufbox()
+  local bufbox = vim.g.bufbox
+  local bufkey = "k"..vim.api.nvim_get_current_buf()
+
+  bufbox[bufkey] = nil
+
+  vim.g.bufbox = bufbox
+end
+
 local function display_bufbox()
   local buffers_vimlist = create_vimlist(vim.g.bufbox)
   local command = "call fzf#run(fzf#wrap({'source' : " .. buffers_vimlist
@@ -36,6 +45,7 @@ end
 M.setup = function ()
   vim.g.bufbox = {}
   vim.api.nvim_create_user_command("BufBoxAddBuffer", add_buffer_to_bufbox, {})
+  vim.api.nvim_create_user_command("BufBoxRemoveBuffer", remove_buffer_from_bufbox, {})
   vim.api.nvim_create_user_command("BufBoxDisplay", display_bufbox, {})
 end
 
