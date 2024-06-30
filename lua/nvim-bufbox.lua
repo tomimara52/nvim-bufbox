@@ -37,6 +37,11 @@ local function remove_buffer_from_bufbox()
   local bufbox = vim.g.bufbox
   local bufkey = "k"..vim.api.nvim_get_current_buf()
 
+  if bufbox[bufkey] == nil then
+    print("Buffer not in bufbox")
+    return
+  end
+
   bufbox[bufkey] = nil
 
   vim.g.bufbox = bufbox
