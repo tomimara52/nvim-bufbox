@@ -22,7 +22,7 @@ Once installed, add the following line to your nvim init file:
 - `:BufBoxDisplay` opens a floating window where you can the buffer box.
 
 
-When in the buffer box window, you can fuzzy search buffers and press enter to open the selected one.
+When in the buffer box window, you can fuzzy search buffers and press `enter` to open the selected one.
 
 You can also use the following keybindings to open buffers:
 
