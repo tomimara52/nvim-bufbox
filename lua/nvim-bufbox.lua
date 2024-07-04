@@ -49,8 +49,9 @@ end
 
 local function display_bufbox()
   local buffers_vimlist = create_vimlist(vim.g.bufbox)
-  local command = "call fzf#run(fzf#wrap({'source' : " .. buffers_vimlist
-    .. ", 'window' : {'width': 0.5, 'height': 0.5}, 'fzf_action' : {'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit'}}))"
+  local command = "call fzf#run(fzf#vim#with_preview(fzf#wrap({'source' : " .. buffers_vimlist
+    .. ", 'window' : {'width': 0.5, 'height': 0.5}, 'fzf_action' : {'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit'}})))"
+
 
   vim.cmd(command)
 end
