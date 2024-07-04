@@ -48,17 +48,22 @@ local function remove_buffer_from_bufbox()
 end
 
 local function display_bufbox()
+  local options = ""
   local bufbox_without_current_buffer = vim.g.bufbox
   local current_buf = vim.api.nvim_get_current_buf()
-
-  bufbox_without_current_buffer["k"..current_buf] = nil
-  local buffers_vimlist = create_vimlist(bufbox_without_current_buffer)
-
   local current_bufname = vim.api.nvim_buf_get_name(current_buf)
 
+  if bufbox_without_current_buffer["k"..current_buf] ~= nil then
+    bufbox_without_current_buffer["k"..current_buf] = nil
+    options = "'options': ['--header=" .. current_bufname .. "']"
+  end
+
+  local buffers_vimlist = create_vimlist(bufbox_without_current_buffer)
+
+
   local command = "call fzf#run(fzf#vim#with_preview(fzf#wrap({'source' : " .. buffers_vimlist
-    .. ", 'window' : {'width': 0.5, 'height': 0.5}, 'fzf_action' : {'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit'}, 'options': ['--header="
-    .. current_bufname .. "']})))"
+    .. ", 'window' : {'width': 0.5, 'height': 0.5}, 'fzf_action' : {'ctrl-t': 'tab split', 'ctrl-x': 'split', 'ctrl-v': 'vsplit'},"
+    .. options .. "})))"
 
 
   vim.cmd(command)
